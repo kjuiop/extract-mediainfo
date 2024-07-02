@@ -1,0 +1,19 @@
+{
+  "log": {
+    "path": "/home/jake/extract-mediainfo/logs/access.log",
+    "level": "debug",
+    "print_std_out": false
+  },
+  "watcher": {
+    "check_interval": 60,
+    "report_file_cnt": 40,
+    "target": [
+      {
+        "type": "local",
+        "path": "/home/kollus/http_upload",
+        "not_check_path": [".working"],
+        "not_suffix_filename": ["_complete"]
+      }
+    ]
+  }
+}
