@@ -8,13 +8,24 @@ import (
 )
 
 type Config struct {
-	Logger Logger `json:"log"`
+	Logger  Logger  `json:"log"`
+	Watcher Watcher `json:"watcher"`
+}
+
+type Watcher struct {
+	CheckIntervalSec int      `json:"check_interval_sec"`
+	Targets          []Target `json:"targets"`
 }
 
 type Logger struct {
 	Path        string `json:"path"`
 	Level       string `json:"level"`
 	PrintStdOut bool   `json:"print_std_out"`
+}
+
+type Target struct {
+	Type string `json:"type"`
+	Path string `json:"path"`
 }
 
 func ReadConfig() (*Config, error) {

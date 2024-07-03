@@ -4,6 +4,7 @@ import (
 	"context"
 	"extract-mediainfo/config"
 	"extract-mediainfo/logger"
+	"extract-mediainfo/watcher"
 	"log"
 	"log/slog"
 	"os"
@@ -32,6 +33,11 @@ func main() {
 	}
 
 	slog.Debug("extract-mediainfo start", "git_hash", GIT_HASH, "build_time", BUILD_TIME, "app_version", APP_VERSION, "hostname", ctx.Value("hostname"))
+
+	watcherClient := watcher.NewWatcherClient(cfg.Watcher)
+
+	wg.Add(1)
+	go watcherClient.CheckWatcherFileCnt(ctx, &wg)
 
 	<-exitSignal()
 	cancel()

@@ -2,6 +2,15 @@
   "log": {
     "path": "/home/jake/extract-mediainfo/logs/access.log",
     "level": "debug",
-    "print_std_out": false
+    "print_std_out": true
+  },
+  "watcher": {
+    "check_interval_sec": 5,
+    "targets": [
+      {
+        "type": "local",
+        "path": "/home/jake/upload"
+      }
+    ]
   }
 }
