@@ -31,7 +31,7 @@ func main() {
 		log.Fatalf("fail to init slog err : %v\n", err)
 	}
 
-	slog.Debug("mp-file-monitor start", "git_hash", GIT_HASH, "build_time", BUILD_TIME, "app_version", APP_VERSION, "hostname", ctx.Value("hostname"))
+	slog.Debug("extract-mediainfo start", "git_hash", GIT_HASH, "build_time", BUILD_TIME, "app_version", APP_VERSION, "hostname", ctx.Value("hostname"))
 
 	<-exitSignal()
 	cancel()
